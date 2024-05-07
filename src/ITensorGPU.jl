@@ -12,6 +12,8 @@ function randomCuITensor(args...; kwargs...)
 end
 export cuITensor, randomCuITensor
 
+# TODO: Change over to `using ITensorMPS`
+# once it is registered.
 using ITensors.ITensorMPS: MPO, MPS, randomMPS
 function CuMPS(args...; kwargs...)
   return cu(MPS(args...; kwargs...))

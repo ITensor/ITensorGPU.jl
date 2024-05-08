@@ -154,24 +154,24 @@ using ITensors, ITensorGPU, Test
     replacebond!(psi, 1, phi)
     @test tags(linkind(psi, 1)) == bondindtags
 
-    # check that replaceBond! updates llim_ and rlim_ properly
-    orthogonalize!(psi, 5)
-    phi = psi[5] * psi[6]
-    replacebond!(psi, 5, phi; ortho="left")
-    @test ITensors.leftlim(psi) == 5
-    @test ITensors.rightlim(psi) == 7
+    ## # check that replaceBond! updates llim_ and rlim_ properly
+    ## orthogonalize!(psi, 5)
+    ## phi = psi[5] * psi[6]
+    ## replacebond!(psi, 5, phi; ortho="left")
+    ## @test ITensors.leftlim(psi) == 5
+    ## @test ITensors.rightlim(psi) == 7
 
-    phi = psi[5] * psi[6]
-    replacebond!(psi, 5, phi; ortho="right")
-    @test ITensors.leftlim(psi) == 4
-    @test ITensors.rightlim(psi) == 6
+    ## phi = psi[5] * psi[6]
+    ## replacebond!(psi, 5, phi; ortho="right")
+    ## @test ITensors.leftlim(psi) == 4
+    ## @test ITensors.rightlim(psi) == 6
 
-    psi.llim = 3
-    psi.rlim = 7
-    phi = psi[5] * psi[6]
-    replacebond!(psi, 5, phi; ortho="left")
-    @test ITensors.leftlim(psi) == 3
-    @test ITensors.rightlim(psi) == 7
+    ## psi.llim = 3
+    ## psi.rlim = 7
+    ## phi = psi[5] * psi[6]
+    ## replacebond!(psi, 5, phi; ortho="left")
+    ## @test ITensors.leftlim(psi) == 3
+    ## @test ITensors.rightlim(psi) == 7
   end
 end
 

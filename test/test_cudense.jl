@@ -1,4 +1,4 @@
-using CUDA: CUDA, CuArray, CuVector
+using CUDA
 using Combinatorics: permutations
 using ITensors
 using ITensorGPU

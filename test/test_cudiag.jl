@@ -30,7 +30,7 @@ using Test: @test, @test_broken, @testset
       @test_broken collect(CuArray(C)) ≈ collect(CuMatrix(Aij, j, i)) * diagm(0 => Dv)
     end
     @testset "Test contract cuDiagITensors (Diag*Diag -> Diag)" begin
-      @test_brokrn E * D
+      @test_broken E * D
       ## C = E * D
       ## cC = CuArray(C)
       ## @test collect(cC) ≈ diagm(0 => Ev) * diagm(0 => Dv)

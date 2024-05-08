@@ -15,7 +15,7 @@ export cuITensor, randomCuITensor
 # TODO: Change over to `using ITensorMPS`
 # once it is registered.
 using ITensors.ITensorMPS: MPO, MPS, randomMPS
-function CuMPS(args...; kwargs...)
+function cuMPS(args...; kwargs...)
   return cu(MPS(args...; kwargs...))
 end
 function productCuMPS(args...; kwargs...)
@@ -24,7 +24,7 @@ end
 function randomCuMPS(args...; kwargs...)
   return cu(randomMPS(args...; kwargs...))
 end
-function CuMPO(args...; kwargs...)
+function cuMPO(args...; kwargs...)
   return cu(MPO(args...; kwargs...))
 end
 export cuMPO, cuMPS, productCuMPS, randomCuMPO, randomCuMPS

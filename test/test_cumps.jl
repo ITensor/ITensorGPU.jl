@@ -239,37 +239,3 @@ end
     @test inner(M0, M) > 0.1
   end
 end
-
-#=@testset "Other MPS methods" begin
-
-  @testset "sample! method" begin
-    N = 10
-    sites = [Index(3,"Site,n=$n") for n=1:N]
-    psi = makeRandomCuMPS(sites,chi=3)
-    nrm2 = inner(psi,psi)
-    psi[1] *= (1.0/sqrt(nrm2))
-
-    s = sample!(psi)
-
-    @test length(s) == N
-    for n=1:N
-      @test 1 <= s[n] <= 3
-    end
-
-    # Throws becase not orthogonalized to site 1:
-    orthogonalize!(psi,3)
-    @test_throws ErrorException sample(psi)
-
-    # Throws becase not normalized
-    orthogonalize!(psi,1)
-    psi[1] *= (5.0/norm(psi[1]))
-    @test_throws ErrorException sample(psi)
-
-    # Works when ortho & normalized:
-    orthogonalize!(psi,1)
-    psi[1] *= (1.0/norm(psi[1]))
-    s = sample(psi)
-    @test length(s) == N
-  end
-
-end=#

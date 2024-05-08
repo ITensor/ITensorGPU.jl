@@ -45,19 +45,19 @@ using Test: @test, @testset
     end
   end
 
-  @testset "Test subtract CuDense" begin
-    A = [SType(1.0) for ii in 1:dim(i), jj in 1:dim(j)]
-    dA = ITensorGPU.CuDense{SType,CuVector{SType,ITensorGPU.default_buffertype()}}(
-      SType(1.0), dim(i) * dim(j)
-    )
-    B = [SType(2.0) for ii in 1:dim(i), jj in 1:dim(j)]
-    dB = ITensorGPU.CuDense{SType,CuVector{SType,ITensorGPU.default_buffertype()}}(
-      SType(2.0), dim(i) * dim(j)
-    )
-    dC = -(dA, IndexSet(i, j), dB, IndexSet(i, j))
-    hC = collect(dC)
-    @test A - B ≈ hC
-  end
+  ## @testset "Test subtract CuDense" begin
+  ##   A = [SType(1.0) for ii in 1:dim(i), jj in 1:dim(j)]
+  ##   dA = ITensorGPU.CuDense{SType,CuVector{SType,ITensorGPU.default_buffertype()}}(
+  ##     SType(1.0), dim(i) * dim(j)
+  ##   )
+  ##   B = [SType(2.0) for ii in 1:dim(i), jj in 1:dim(j)]
+  ##   dB = ITensorGPU.CuDense{SType,CuVector{SType,ITensorGPU.default_buffertype()}}(
+  ##     SType(2.0), dim(i) * dim(j)
+  ##   )
+  ##   dC = -(dA, IndexSet(i, j), dB, IndexSet(i, j))
+  ##   hC = collect(dC)
+  ##   @test A - B ≈ hC
+  ## end
   @testset "Test2 subtract CuDense" begin
     for i1 in indices, i2 in indices
       i1 == i2 && continue

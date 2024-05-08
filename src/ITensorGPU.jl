@@ -29,9 +29,9 @@ end
 function cuMPO(args...; kwargs...)
   return adapt(CuArray, MPO(args...; kwargs...))
 end
+cuMPO(tn::MPO) = adapt(CuArray, tn)
 function randomCuMPO(args...; kwargs...)
   return adapt(CuArray, randomMPO(args...; kwargs...))
 end
-cuMPO(tn::MPO) = cu(tn)
 export cuMPO, cuMPS, productCuMPS, randomCuMPO, randomCuMPS
 end

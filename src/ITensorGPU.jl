@@ -20,6 +20,7 @@ using ITensors.ITensorMPS: MPO, MPS, randomMPO, randomMPS
 function cuMPS(args...; kwargs...)
   return adapt(CuArray, MPS(args...; kwargs...))
 end
+cuMPS(tn::MPS) = adapt(CuArray, tn)
 function productCuMPS(args...; kwargs...)
   return adapt(CuArray, MPS(args...; kwargs...))
 end

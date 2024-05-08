@@ -198,8 +198,8 @@ using ITensors,
       a_only_inds = [Index(2) for ii in 1:7]
       b_only_inds = [Index(2) for ii in 1:7]
       shared_inds = [Index(2) for ii in 1:7]
-      A = randomITensor(IndexSet(vcat(a_only_inds, shared_inds)))
-      B = randomITensor(IndexSet(vcat(b_only_inds, shared_inds)))
+      A = randomITensor(vcat(a_only_inds, shared_inds))
+      B = randomITensor(vcat(b_only_inds, shared_inds))
       cA = cuITensor(A)
       cB = cuITensor(B)
       inds_a = vcat(a_only_inds, shared_inds)

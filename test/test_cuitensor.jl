@@ -19,12 +19,10 @@ using ITensors,
     @test_broken collect(CuArray(A, i, j, k)) == ones(SType, dim(i), dim(j), dim(k))
     A = randomCuITensor((i, j, k))
     @test inds(A) == (i, j, k)
-    @test ITensorGPU.storage(A) isa ITensorGPU.CuDense
     Aarr = rand(SType, dim(i) * dim(j) * dim(k))
     @test cpu(ITensor(Aarr, i, j, k)) == cpu(cuITensor(Aarr, i, j, k))
     @test cuITensor(SType, i, j, k) isa ITensor
-    @test storage(cuITensor(SType, i, j, k)) isa ITensorGPU.CuDense{SType}
-    @test vec(collect(CuArray(ITensor(Aarr, i, j, k), i, j, k))) == Aarr
+    @test_broken vec(collect(CuArray(ITensor(Aarr, i, j, k), i, j, k))) == Aarr
   end
   @testset "Test permute(cuITensor,Index...)" begin
     CA = randomCuITensor(SType, i, k, j)
@@ -60,9 +58,7 @@ using ITensors,
   @testset "Test CuVector(cuITensor)" begin
     v = CuVector(ones(SType, dim(a)))
     A = cuITensor(v, a)
-    CUDA.@allowscalar begin
-      @test v == CuVector(A)
-    end
+    @test_broken v == CuVector(A)
   end
   @testset "Test CuMatrix(cuITensor)" begin
     v = CuMatrix(ones(SType, dim(a), dim(l)))

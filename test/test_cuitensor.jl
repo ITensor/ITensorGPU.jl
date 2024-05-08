@@ -60,7 +60,7 @@ using ITensors,
   @testset "Test CuVector(cuITensor)" begin
     v = CuVector(ones(SType, dim(a)))
     A = cuITensor(v, a)
-    @allowscalar begin
+    CUDA.@allowscalar begin
       @test v == CuVector(A)
     end
   end

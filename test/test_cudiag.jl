@@ -1,10 +1,10 @@
-using ITensors,
-  ITensors.NDTensors,
-  ITensorGPU,
-  LinearAlgebra, # For tr()
-  Combinatorics, # For permutations()
-  CUDA,
-  Test
+using ITensors
+using ITensors.NDTensors: NDTensors
+using ITensorGPU
+using LinearAlgebra: tr
+using Combinatorics: permutations
+using CUDA
+using Test: @test, @test_broken, @testset
 
 @testset "cuITensor $T Contractions" for T in (Float64, ComplexF64)
   mi, mj, mk, ml, ma = 2, 3, 4, 5, 6, 7

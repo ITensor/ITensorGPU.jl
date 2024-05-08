@@ -1,6 +1,6 @@
 module ITensorGPU
 using Adapt: adapt
-using CUDA: CUDA, cu
+using CUDA: CUDA, CuArray, cu
 export cu
 using ITensors: cpu
 export cpu

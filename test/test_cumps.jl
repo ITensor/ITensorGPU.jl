@@ -1,4 +1,8 @@
-using ITensors, ITensorGPU, Test
+using ITensorGPU
+using ITensorMPS
+using ITensors
+using Test: @test, @testset
+
 @testset "cuMPS Basics" begin
   N = 10
   sites = [Index(2, "Site") for n in 1:N]

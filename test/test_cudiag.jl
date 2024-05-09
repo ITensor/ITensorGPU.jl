@@ -1,9 +1,9 @@
-using ITensors
-using ITensors.NDTensors: NDTensors
-using ITensorGPU
-using LinearAlgebra: tr
 using Combinatorics: permutations
 using CUDA
+using ITensorGPU
+using ITensors
+using ITensors.NDTensors: NDTensors
+using LinearAlgebra: tr
 using Test: @test, @test_broken, @testset
 
 @testset "cuITensor $T Contractions" for T in (Float64, ComplexF64)

@@ -1,7 +1,7 @@
-using CUDA
 using Combinatorics: permutations
-using ITensors
+using CUDA
 using ITensorGPU
+using ITensors
 using LinearAlgebra: tr
 using Test: @test, @testset
 

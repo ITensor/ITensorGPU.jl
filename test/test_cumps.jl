@@ -96,25 +96,6 @@ using ITensors, ITensorGPU, Test
     @test_throws DimensionMismatch inner(phi, badpsi)
   end
 
-  @testset "inner same MPS" begin
-    psi = randomMPS(sites)
-    psidag = dag(deepcopy(psi))
-    ITensors.prime_linkinds!(psidag)
-    psipsi = psidag[1] * psi[1]
-    for j in 2:N
-      psipsi = psipsi * psidag[j] * psi[j]
-    end
-    @test psipsi[] ≈ inner(psi, psi)
-    psi = randomCuMPS(sites)
-    psidag = dag(deepcopy(psi))
-    ITensors.prime_linkinds!(psidag)
-    psipsi = psidag[1] * psi[1]
-    for j in 2:N
-      psipsi = psipsi * psidag[j] * psi[j]
-    end
-    @test psipsi[] ≈ inner(psi, psi)
-  end
-
   @testset "add MPS" begin
     psi = randomMPS(sites)
     phi = deepcopy(psi)

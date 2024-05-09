@@ -3,6 +3,7 @@ using CUDA
 using ITensorGPU
 using ITensors
 using LinearAlgebra: tr
+using Random: Random
 using Test: @test, @testset
 
 @testset "cuITensor $T Contractions" for T in (Float64, ComplexF64)
@@ -211,8 +212,8 @@ using Test: @test, @testset
       end
       @test Ccpu ≈ cpu(C)
       for shuffles in 1:1 # too many permutations to test all
-        inds_a = shuffle(vcat(a_only_inds, shared_inds))
-        inds_b = shuffle(vcat(b_only_inds, shared_inds))
+        inds_a = Random.shuffle(vcat(a_only_inds, shared_inds))
+        inds_b = Random.shuffle(vcat(b_only_inds, shared_inds))
         cA_ = permute(cA, inds_a...)
         cB_ = permute(cB, inds_b...)
         @disable_warn_order begin

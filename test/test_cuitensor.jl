@@ -3,6 +3,7 @@ using CUDA
 using ITensorGPU
 using ITensors
 using LinearAlgebra: tr
+using Random: Random
 using Test: @test, @testset
 
 # gpu tests!
@@ -40,7 +41,7 @@ using Test: @test, @testset
     A = randomITensor(SType, (inds))
     CA = cuITensor(A)
     for shuffle_count in 1:20
-      perm_inds = shuffle(inds)
+      perm_inds = Random.shuffle(inds)
       permCA = permute(CA, perm_inds...)
       permA = cpu(permCA)
       pA = permute(A, perm_inds...)

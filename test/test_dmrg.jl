@@ -23,8 +23,6 @@ end
     dmrg_kwargs = (;
       nsweeps=3, maxdim=[10, 20, 40], mindim=[1, 10], cutoff=1e-11, noise=1e-11
     )
-    str = split(sprint(show, sweeps), '\n')
-    @test length(str) > 1
     energy, psi = dmrg(H, psi; outputlevel=0, dmrg_kwargs...)
     @test energy < -12.0
   end

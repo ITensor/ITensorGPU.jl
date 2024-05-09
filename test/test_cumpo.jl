@@ -1,4 +1,7 @@
-using ITensors, ITensorGPU, Test
+using ITensorGPU
+using ITensorMPS
+using ITensors
+using Test: @test, @testset
 
 @testset "CuMPO Basics" begin
   N = 6

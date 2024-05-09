@@ -1,4 +1,7 @@
-using ITensorGPU, ITensors, Test, Random
+using ITensorGPU
+using ITensorMPS
+using ITensors
+using Test: @test, @testset
 
 function heisenberg(n)
   opsum = OpSum()

@@ -1,10 +1,9 @@
-using ITensors,
-  ITensorGPU,
-  LinearAlgebra, # For tr()
-  Combinatorics, # For permutations()
-  Random,
-  CUDA,
-  Test
+using Combinatorics: permutations
+using CUDA
+using ITensorGPU
+using ITensors
+using LinearAlgebra: tr
+using Test: @test, @testset
 
 # gpu tests!
 @testset "cuITensor, Dense{$SType} storage" for SType in (Float64, ComplexF64)

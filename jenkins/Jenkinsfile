@@ -27,7 +27,7 @@ pipeline {
           }
           steps {
             sh '''
-              julia -e 'using Pkg; Pkg.activate(temp=true); Pkg.develop(path="."); Pkg.test("ITensorGPU")'
+              julia -e 'using Pkg; Pkg.activate(temp=true); Pkg.Registry.update(); Pkg.update(); Pkg.develop(path="."); Pkg.test("ITensorGPU")'
               '''
           }
         }
@@ -51,7 +51,7 @@ pipeline {
           }
           steps {
             sh '''
-              julia -e 'using Pkg; Pkg.activate(temp=true); Pkg.develop(path="."); Pkg.test("ITensorGPU")'
+              julia -e 'using Pkg; Pkg.activate(temp=true); Pkg.Registry.update(); Pkg.update(); Pkg.develop(path="."); Pkg.test("ITensorGPU")'
             '''
           }
         }

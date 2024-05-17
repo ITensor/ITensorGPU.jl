@@ -14,7 +14,7 @@ function randomCuITensor(args...; kwargs...)
 end
 export cuITensor, randomCuITensor
 
-using ITensorMPS: MPO, MPS, randomMPO, random_mps
+using ITensorMPS: MPO, MPS, random_mpo, random_mps
 function cuMPS(args...; kwargs...)
   return adapt(CuArray, MPS(args...; kwargs...))
 end
@@ -30,7 +30,7 @@ function cuMPO(args...; kwargs...)
 end
 cuMPO(tn::MPO) = adapt(CuArray, tn)
 function randomCuMPO(args...; kwargs...)
-  return adapt(CuArray, randomMPO(args...; kwargs...))
+  return adapt(CuArray, random_mpo(args...; kwargs...))
 end
 export cuMPO, cuMPS, productCuMPS, randomCuMPO, randomCuMPS
 end

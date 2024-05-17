@@ -26,7 +26,7 @@ using Test: @test, @testset
   @test all(ITensors.data(K) .== ITensors.data(K_))
 
   s = siteinds("S=1/2", N)
-  L = randomMPO(s)
+  L = random_mpo(s)
   K = cuMPO(L)
   @test all(ITensors.data(cpu(K)) .== ITensors.data(cpu(L)))
   @testset "orthogonalize" begin

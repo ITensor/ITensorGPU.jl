@@ -53,7 +53,7 @@ end
     s = siteinds("S=1/2", n)
 
     H = device(MPO(heisenberg(n), s))
-    ψ0 = device(randomMPS(s))
+    ψ0 = device(random_mps(s))
 
     dmrg_params = (; nsweeps=4, maxdim=10, cutoff=1e-8, noise=1e-8, outputlevel=0)
     observer = DMRGObserver(["Z"], s; energy_tol=1e-4, minsweeps=10)

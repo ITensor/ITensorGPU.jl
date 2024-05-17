@@ -5,16 +5,16 @@ export cu
 using ITensors: cpu
 export cpu
 
-using ITensors: ITensor, cpu, cu, randomITensor
+using ITensors: ITensor, cpu, cu, random_itensor
 function cuITensor(args...; kwargs...)
   return adapt(CuArray, ITensor(args...; kwargs...))
 end
 function randomCuITensor(args...; kwargs...)
-  return adapt(CuArray, randomITensor(args...; kwargs...))
+  return adapt(CuArray, random_itensor(args...; kwargs...))
 end
 export cuITensor, randomCuITensor
 
-using ITensorMPS: MPO, MPS, randomMPO, randomMPS
+using ITensorMPS: MPO, MPS, randomMPO, random_mps
 function cuMPS(args...; kwargs...)
   return adapt(CuArray, MPS(args...; kwargs...))
 end
@@ -23,7 +23,7 @@ function productCuMPS(args...; kwargs...)
   return adapt(CuArray, MPS(args...; kwargs...))
 end
 function randomCuMPS(args...; kwargs...)
-  return adapt(CuArray, randomMPS(args...; kwargs...))
+  return adapt(CuArray, random_mps(args...; kwargs...))
 end
 function cuMPO(args...; kwargs...)
   return adapt(CuArray, MPO(args...; kwargs...))

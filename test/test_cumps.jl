@@ -21,7 +21,7 @@ using Test: @test, @testset
   psi[1] = cuITensor(sites[1])
   @test hasind(psi[1], sites[1])
 
-  L = randomMPS(sites)
+  L = random_mps(sites)
   K = cuMPS(L)
   @test all(ITensors.data(cpu(K)) .== ITensors.data(cpu(L)))
 
@@ -60,7 +60,7 @@ using Test: @test, @testset
     end
   end
 
-  @testset "randomMPS" begin
+  @testset "random_mps" begin
     phi = randomCuMPS(sites)
     @test hasind(phi[1], sites[1])
     @test norm(phi[1]) ≈ 1.0
@@ -69,8 +69,8 @@ using Test: @test, @testset
   end
 
   @testset "inner different MPS" begin
-    phi = randomMPS(sites)
-    psi = randomMPS(sites)
+    phi = random_mps(sites)
+    psi = random_mps(sites)
     phipsi = dag(phi[1]) * psi[1]
     for j in 2:N
       phipsi *= dag(phi[j]) * psi[j]
@@ -101,7 +101,7 @@ using Test: @test, @testset
   end
 
   @testset "add MPS" begin
-    psi = randomMPS(sites)
+    psi = random_mps(sites)
     phi = deepcopy(psi)
     xi = add(psi, phi)
     @test inner(xi, xi) ≈ 4.0 * inner(psi, psi)

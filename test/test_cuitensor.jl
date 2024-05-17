@@ -38,7 +38,7 @@ using Test: @test, @testset
   end
   @testset "Test permute(cuITensor,Index...) for large tensors" begin
     inds = [Index(2) for ii in 1:14]
-    A = randomITensor(SType, (inds))
+    A = random_itensor(SType, (inds))
     CA = cuITensor(A)
     for shuffle_count in 1:20
       perm_inds = Random.shuffle(inds)
